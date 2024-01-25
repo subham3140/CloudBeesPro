@@ -14,6 +14,18 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     /**
+     * Method To Create Product Data;
+     *
+     * @param product:- The Product
+     * @return product:- The Product
+     **/
+    @Override
+    public Product createProduct(Product product) {
+        productRepository.save(product);
+        return product;
+    }
+
+    /**
      * Method To Apply Product Discount;
      *
      * @param discount:- The Discount
@@ -61,11 +73,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct(Product product) {
         Product updateProduct = (Product) productRepository.findByProductId(product.getProductId()).get(0);
+        System.out.println("service find pro: " + updateProduct.getPrice());
+        System.out.println("service pro: " + product.getPrice());
         updateProduct.setDescription(product.getDescription());
         updateProduct.setName(product.getName());
         updateProduct.setPrice(product.getPrice());
         updateProduct.setQuantityAvailable(product.getQuantityAvailable());
         productRepository.save(updateProduct);
+        System.out.println("service updated to repo: " +  ((Product) productRepository.findByProductId(product.getProductId()).get(0)).getPrice());
         return updateProduct;
     }
 

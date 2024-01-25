@@ -4,10 +4,14 @@ import com.cloudbees.ecommerce.app.model.Product;
 import com.cloudbees.ecommerce.app.pojoModel.Discount;
 import com.cloudbees.ecommerce.app.pojoModel.Tax;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
 public interface ProductService {
+
+    /**
+     * Method To Create Product;
+     **/
+    public Product createProduct(Product product);
 
     /**
      * Method To Apply Product Discount;

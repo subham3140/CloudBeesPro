@@ -39,7 +39,7 @@ public class ProductController {
     public ResponseEntity<Object> createProduct(@RequestBody Product product) {
         try {
             LOGGER.debug("generating a new entry Product data..");
-            productRepository.save(product);
+            productService.createProduct(product);
             LOGGER.debug("product created and saved successfully..");
             return new ResponseEntity<>(product, HttpStatus.OK);
         } catch (Exception e) {
@@ -89,7 +89,7 @@ public class ProductController {
         try {
             LOGGER.debug("fetching a product..");
             Product product = productService.getProduct(productId);
-            LOGGER.debug("product fetched a successfully..");
+            LOGGER.debug("product fetched successfully..");
             return new ResponseEntity<>(product, HttpStatus.OK);
         } catch (Exception e) {
             LOGGER.error("error occurred during fetching product of id:- " + productId + " with:- " + e);
